@@ -8,4 +8,9 @@ class Service::Base
   def results
     fail
   end
+
+  def self.instance
+    fail if self == Service::Base
+    self.first
+  end
 end
