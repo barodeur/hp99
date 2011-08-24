@@ -21,8 +21,11 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'
 
+# Mongoid
+gem "mongoid", "~> 2.1"
+gem "bson_ext", "~> 1.3"
