@@ -1,7 +1,7 @@
 class Service::Base
   include Mongoid::Document
 
-  field :queries, :type => Array
+  has_and_belongs_to_many :queries
 
   validates :_type, :uniqueness => true
 
