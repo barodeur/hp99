@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %header.container_12
+      %h1.grid_8.prefix_2
+        HP99
+    = yield

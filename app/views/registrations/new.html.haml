@@ -1,0 +1,12 @@
+%section.container_12
+  = form_for @registration do |f|
+    .email.grid_5
+      = f.label :email
+      = f.text_field :email
+    .or.grid_2
+      Ou
+    .twitter.grid_5.soon
+      = f.label :twitter
+      -# = f.text_field :twitter
+    .clear
+    = f.submit
