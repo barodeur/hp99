@@ -31,3 +31,4 @@ gem "mongoid", "~> 2.1"
 gem "bson_ext", "~> 1.3"
 
 gem 'nokogiri', :require => 'nokogiri'
+gem 'haml-rails'
