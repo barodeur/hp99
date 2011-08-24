@@ -22,6 +22,7 @@ gem 'jquery-rails'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'capistrano-ext'
 
 # To use debugger
 gem 'ruby-debug19', :require => 'ruby-debug'
@@ -32,3 +33,11 @@ gem "bson_ext", "~> 1.3"
 
 gem 'nokogiri', :require => 'nokogiri'
 gem 'haml-rails'
+
+group :staging do
+  gem 'unicorn'
+end
+
+group :production do
+  gem 'unicorn'
+end
