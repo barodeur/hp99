@@ -1,7 +1,7 @@
 class Service::FnacFr < Service::Base
   include Mongoid::Document
 
-  def self.results(options={})
+  def results(options={})
     options[:query] ||= 'hp+touchpad'
     page = Nokogiri::HTML(open("http://recherche.fnac.com/Search/SearchResult.aspx?Search=#{options[:query]}&ItemPerPage=50"))
     results = page.css('.prd-result').first.css('.oneprd').map do |prd|

@@ -1,7 +1,7 @@
 class Service::RueDuCommerce < Service::Base
   include Mongoid::Document
 
-  def self.results(options={})
+  def results(options={})
     options[:query] ||= 'hp+touchpad'
     page = Nokogiri::HTML(open("http://search.rueducommerce.fr/search?s=#{options[:query]}"))
     results = page.css('.blcResRech').first.css('.prdDiv').map do |prd|

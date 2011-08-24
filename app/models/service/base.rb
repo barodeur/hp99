@@ -5,7 +5,7 @@ class Service::Base
 
   validates :_type, :uniqueness => true
 
-  def self.results
+  def results
     fail
   end
 end
