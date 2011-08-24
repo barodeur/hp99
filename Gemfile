@@ -29,3 +29,5 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 # Mongoid
 gem "mongoid", "~> 2.1"
 gem "bson_ext", "~> 1.3"
+
+gem 'nokogiri', :require => 'nokogiri'
