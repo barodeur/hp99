@@ -24,4 +24,7 @@ Hp99::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = Hash[YAML::load(File.open("#{Rails.root}/config/email.yml"))[Rails.env].map{|k,v| [k.to_sym, v]}]
 end
