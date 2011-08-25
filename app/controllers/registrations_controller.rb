@@ -14,4 +14,13 @@ class RegistrationsController < ApplicationController
     flash[:notice] = "thx" if @registration.save
     respond_with @registration
   end
+
+  def confirmation
+    @registration = Registration.find params[:id]
+    if @registration.confirmation_token == params[:confirmation_token]
+      @registration.confirm!
+      flash[:notice] = "merci"
+    end
+    redirect_to registration_path(@registration)
+  end
 end
