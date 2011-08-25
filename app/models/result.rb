@@ -3,14 +3,19 @@ class Result
 
   after_create :avert
 
-  belongs_to :service, :class_name => 'Service::Base'
+  belongs_to :service, :class_name => 'Service::Base', :inverse_of => :results
   has_and_belongs_to_many :averted_by_email_registrations, :class_name => 'Registration', :inverse_of => :received_by_email_results
 
   field :title
   field :url
   field :price, :type => Float
+  field :other
 
   validates :title, :uniqueness => { :scope => :service_id }
+
+  validate do |result|
+    result.errors[:hp_touchpad] << "This result is not an HP TouchPad" unless result.hp_touchpad?
+  end
 
   def avert
     avert_by_email
@@ -20,5 +25,9 @@ class Result
     Registration.not_in(:id => self.averted_by_email_registration_ids).each do |registration|
       ResultMailer.avert(registration, self).deliver
     end
+  end
+
+  def hp_touchpad?
+    service.class.hp_touchpad? self
   end
 end

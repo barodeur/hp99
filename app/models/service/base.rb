@@ -1,12 +1,24 @@
 class Service::Base
   include Mongoid::Document
 
+  has_many :results, :inverse_of => :service
   has_and_belongs_to_many :queries
 
   validates :_type, :uniqueness => true
 
-  def results
+  def full_name
     fail
+  end
+
+  def self.hp_touchpad?(result)
+    fail
+  end
+
+  def self.fetch_results(options={})
+    fail if self == Service::Base
+    instance.queries.each do |query|
+      perform_query query
+    end
   end
 
   def self.instance
@@ -19,7 +31,7 @@ class Service::Base
   end
 
   protected
-    def perform_query(query)
+    def self.perform_query(query)
       fail
     end
 end
