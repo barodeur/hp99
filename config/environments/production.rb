@@ -49,6 +49,5 @@ Hp99::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = Hash[YAML::load(File.open("#{Rails.root}/config/email.yml"))[Rails.env].map{|k,v| [k.to_sym, v]}]
+  config.action_mailer.default_url_options = { :host => 'hp99.fr' }
 end
