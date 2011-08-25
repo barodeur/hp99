@@ -12,7 +12,7 @@ require 'bundler/capistrano'
 
 after "deploy:setup", "symlinks:mkdir"
 # before "deploy", "rbenv:init"
-after "deploy:update_code", "symlinks:db", "assets:precompile"
+after "deploy:update_code", "symlinks:db", "symlinks:mailers", "assets:precompile"
 after "deploy", "deploy:cleanup"
 
 namespace :rbenv do
@@ -29,6 +29,11 @@ namespace :symlinks do
   desc "Symlink database config file"
   task :db do
     run "ln -nfs #{shared_path}/config/mongoid.yml #{current_release}/config/mongoid.yml"
+  end
+
+  desc "Symlink mailers config file"
+  task :mailers do
+    run "ln -nfs #{shared_path}/config/mailers.yml #{current_release}/config/mailers.yml"
   end
 
   desc "Create dirs"
