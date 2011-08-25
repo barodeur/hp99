@@ -10,4 +10,8 @@ class Query
   def keywords
     read_attribute :keywords
   end
+
+  def to_s
+    keywords.join('+')
+  end
 end

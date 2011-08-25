@@ -13,4 +13,13 @@ class Service::Base
     fail if self == Service::Base
     self.first
   end
+
+  def self.instances
+    all
+  end
+
+  protected
+    def perform_query(query)
+      fail
+    end
 end
