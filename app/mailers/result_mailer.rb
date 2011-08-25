@@ -5,7 +5,7 @@ class ResultMailer < ActionMailer::Base
     @registration = registration
     @result = result
     mail :to => @registration.email,
-      :subject => "HP Touchpad sur le dite de #{@result.service.full_name}"
+      :subject => "HP Touchpad sur le site de #{@result.service.full_name}"
     @registration.received_by_email_results << @result
   end
 end
