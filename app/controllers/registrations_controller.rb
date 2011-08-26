@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+  before_filter :load_last_results, :only => %w(new create)
+
   def show
     @registration = Registration.find params[:id]
     respond_with @registration
@@ -6,7 +8,6 @@ class RegistrationsController < ApplicationController
 
   def new
     @registration = Registration.new
-    @last_results = Result.order_by([[:created_at, :desc]]).limit(5)
     respond_with @registration
   end
 
@@ -24,4 +25,9 @@ class RegistrationsController < ApplicationController
     end
     redirect_to registration_path(@registration)
   end
+
+  protected
+    def load_last_results
+      @last_results = Result.order_by([[:created_at, :desc]]).limit(5)
+    end
 end
