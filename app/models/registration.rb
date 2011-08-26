@@ -12,7 +12,10 @@ class Registration
   field :confirmed_at, :type => DateTime
   attr_accessible :email
 
-  validates :email, presence: true, :uniqueness => true
+  validates :email,
+    presence: true,
+    uniqueness: true,
+    format: { with: /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
   def confirm!
     update_attribute :confirmed_at, DateTime.now
