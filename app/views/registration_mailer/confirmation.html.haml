@@ -1,1 +1,8 @@
-= link_to "Confirmer", confirmation_registration_url(@registration, :confirmation_token => @registration.confirmation_token)
+%h1 Confirmation de votre inscription à hp99.fr
+%p
+  Nous vous remercions pour votre inscription sur hp99.fr
+%p
+  Veuillez confirmer cette inscription en cliquant sur le lien suivant :
+  = link_to confirmation_registration_url(@registration, :confirmation_token => @registration.confirmation_token), confirmation_registration_url(@registration, :confirmation_token => @registration.confirmation_token)
+%p
+  Paul Chobert (hp99.fr)
