@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# Q U E R I E S
+hp_touchpad = Query.create :keywords => 'hp touchpad'
+
+# S E R V I C E S
+fnac_fr = Service::FnacFr.create :queries => [hp_touchpad]
+rue_du_commerce = Service::RueDuCommerce.create :queries => [hp_touchpad]
