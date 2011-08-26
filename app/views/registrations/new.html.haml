@@ -1,12 +1,6 @@
-%section.container_12
-  = form_for @registration do |f|
-    .email.grid_5
+%section.registration
+  = form_for @registration, remote: true, html: { 'data-type' => 'json'} do |f|
+    = field_set_tag '', :class => 'email' do
       = f.label :email
-      = f.text_field :email
-    .or.grid_2
-      Ou
-    .twitter.grid_5.soon
-      = f.label :twitter
-      -# = f.text_field :twitter
-    .clear
-    = f.submit
+      = f.text_field :email, :placeholder => 'votre email'
+      = f.submit "s'enregistrer"
