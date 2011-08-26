@@ -6,6 +6,7 @@ class RegistrationsController < ApplicationController
 
   def new
     @registration = Registration.new
+    @last_results = Result.order_by([[:created_at, :desc]]).limit(5)
     respond_with @registration
   end
 
