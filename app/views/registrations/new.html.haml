@@ -17,6 +17,7 @@
       = f.label :email
       = f.text_field :email, :placeholder => 'votre email'
       = f.submit "s'enregistrer"
+      %p.inscrits= "Déjà #{Registration.count} inscrits"
   - if @last_results.any?
     %h2 Derniers produits trouvés
     %ul.last_results
