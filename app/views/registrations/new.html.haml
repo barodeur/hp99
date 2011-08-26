@@ -1,5 +1,6 @@
 %section.registration
-  = form_for @registration, remote: true, html: { 'data-type' => 'json'} do |f|
+  -# = form_for @registration, remote: true, html: { 'data-type' => 'json'} do |f|
+  = form_for @registration do |f|
     = field_set_tag '', :class => 'email' do
       = f.label :email
       = f.text_field :email, :placeholder => 'votre email'
