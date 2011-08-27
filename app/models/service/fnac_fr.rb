@@ -9,6 +9,13 @@ class Service::FnacFr < Service::Base
     result.other =~ /Tablette tactile/
   end
 
+  def self.confirm(url)
+    page = Nokogiri::HTML(open(url))
+    price = page.css('.price').try(:first).try(:content).try(:strip)
+    availability = page.css('.moutarde').first.content.strip
+    price =~ /\d+(,\+)?/ && availability =~ /en stock/i
+  end
+
   protected
     def self.perform_query(query)
       page = Nokogiri::HTML(open("http://recherche.fnac.com/Search/SearchResult.aspx?Search=#{query}&ItemPerPage=50"))

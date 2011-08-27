@@ -14,11 +14,16 @@ class Service::Base
     fail
   end
 
+  def self.confirm(url)
+    fail
+  end
+
   def self.fetch_results(options={})
     fail if self == Service::Base
-    instance.queries.each do |query|
-      perform_query query
+    results = instance.queries.map do |query|
+      perform_query(query).map{|re| re if re.persisted?}
     end
+    results.flatten.compact
   end
 
   def self.instance

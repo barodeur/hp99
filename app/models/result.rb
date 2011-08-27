@@ -28,6 +28,6 @@ class Result
   end
 
   def hp_touchpad?
-    service.class.hp_touchpad? self
+    service.class.hp_touchpad?(self) && service.class.confirm(self.url)
   end
 end
