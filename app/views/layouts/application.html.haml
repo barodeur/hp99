@@ -6,11 +6,14 @@
     = csrf_meta_tags
   %body
     %header
+      .social
+        = link_to image_tag('twitter.png'), 'http://twitter.com/hp99_fr'
       %h1
         HP 99
       %h2
         Soyez alertés dès la remise en rayon des HP TouchPad
     = yield
     %footer
-      Les sources de ce service sont disponibles ici :
-      %a{href: 'https://github.com/barodeur/hp99/'} github
+      %p
+        Les sources de ce service sont disponibles ici :
+        %a{href: 'https://github.com/barodeur/hp99/'} github
