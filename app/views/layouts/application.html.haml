@@ -5,6 +5,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     %title HP99 - Soyez alertés dès la remise en rayon des HP TouchPad
+    = render 'shared/google_analytics'
   %body
     %header
       .social
@@ -18,3 +19,4 @@
       %p
         Les sources de ce service sont disponibles ici :
         %a{href: 'https://github.com/barodeur/hp99/'} github
+    
