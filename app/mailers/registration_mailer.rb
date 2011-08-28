@@ -1,5 +1,5 @@
 class RegistrationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "paul@hp99.fr"
 
   def confirmation(registration)
     @registration = registration
