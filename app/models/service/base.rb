@@ -21,7 +21,7 @@ class Service::Base
   def self.fetch_results(options={})
     fail if self == Service::Base
     results = instance.queries.map do |query|
-      perform_query(query).map{|re| re if re.persisted?}
+      perform_query(query)
     end
     results.flatten.compact
   end

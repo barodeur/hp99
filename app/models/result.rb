@@ -12,9 +12,11 @@ class Result
   field :other
 
   validates :title, :uniqueness => { :scope => :service_id }
+  validate :hp_touchpad?
 
-  validate do |result|
-    result.errors[:hp_touchpad] << "This result is not an HP TouchPad" unless result.hp_touchpad?
+  def hp_touchpad?
+    errors[:hp_touchpad?] << "This result is not an HP TouchPad" unless service.class.hp_touchpad?(self)
+    errors[:confirmed] << "Not confirmed" unless service.class.confirm(self.url)
   end
 
   def avert
@@ -25,9 +27,5 @@ class Result
     Registration.where(:confirmed_at.ne => nil).each do |registration|
       ResultMailer.avert(registration, self).deliver
     end
-  end
-
-  def hp_touchpad?
-    service.class.hp_touchpad?(self) && service.class.confirm(self.url)
   end
 end
