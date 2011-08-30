@@ -5,4 +5,7 @@
   Veuillez confirmer cette inscription en cliquant sur le lien suivant :
   = link_to confirmation_registration_url(@registration, :confirmation_token => @registration.confirmation_token), confirmation_registration_url(@registration, :confirmation_token => @registration.confirmation_token)
 %p
+  Vous pouvez supprimer votre inscription en cliquant
+  = link_to 'ici', unconfirm_registration_url(@registration, :confirmation_token => @registration.confirmation_token)
+%p
   Paul Chobert (hp99.fr)

@@ -17,6 +17,11 @@ class RegistrationsController < ApplicationController
     respond_with @registration
   end
 
+  def unconfirm
+    @registration = Registration.find params[:id]
+    @registration.destroy if @registration.confirmation_token == params[:confirmation_token]
+  end
+
   def confirmation
     @registration = Registration.find params[:id]
     if @registration.confirmation_token == params[:confirmation_token]
