@@ -21,10 +21,10 @@ class Service::Cdiscount < Service::Base
     def self.perform_query(query)
       page = Nokogiri::HTML(open("http://www.cdiscount.com/sa-10/#{query}.html"))
       page.css('.background100Std001 .productList100Std001').map do |prd|
-        title = prd.css('.productTitle').first.content.strip
-        url = prd.css('.productTitle').first['href']
+        title = prd.css('.productTitle').first.try(:content).try(:strip)
+        url = prd.css('.productTitle').first.try(:[], 'href')
         description = prd.css('.productShortDesc').first.try(:content).try(:strip)
-        price = prd.css('.productPriceTtc .nodisp').first.content.strip
+        price = prd.css('.productPriceTtc .nodisp').first.try(:content).try(:strip)
         instance.results.create({title: title, url: url, price: price[/\d+(,\d+)?/], other: description})
       end
     end

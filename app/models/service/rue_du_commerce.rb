@@ -20,10 +20,10 @@ class Service::RueDuCommerce < Service::Base
     def self.perform_query(query)
       page = Nokogiri::HTML(open("http://search.rueducommerce.fr/search?s=#{query}"))
       page.css('.blcResRech').first.css('.prdDiv').map do |prd|
-        title = prd.css('.prdTitle').first.content.strip
-        url = prd.css('.prdTitle').first.css('a').first['href']
-        rayons = prd.css('.prdDescrAr').first.content.strip
-        price = prd.css('.price1x').first.content.strip
+        title = prd.css('.prdTitle').first.try(:content).try(:strip)
+        url = prd.css('.prdTitle').first.try(:[], 'href')
+        rayons = prd.css('.prdDescrAr').first.try(:content).try(:strip)
+        price = prd.css('.price1x').first.try(:content).try(:strip)
         instance.results.create({title: title, url: url, price: price[/\d+(,\d+)?/], other: rayons})
       end
     end
