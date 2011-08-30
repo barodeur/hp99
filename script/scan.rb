@@ -1,5 +1,6 @@
 puts '# NEW SCAN #'
 puts "#{Time.now}"
-Service::FnacFr.fetch_results
-Service::RueDuCommerce.fetch_results
-Service::Cdiscount.fetch_results
+results = [Service::FnacFr, Service::RueDuCommerce, Service::Cdiscount].map do |service_class|
+  puts "Fetching #{service_class}"
+  service_class.fetch_results
+end
