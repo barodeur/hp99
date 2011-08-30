@@ -12,7 +12,7 @@ class Service::FnacFr < Service::Base
   def self.confirm(url)
     page = Nokogiri::HTML(open(url))
     price = page.css('.price').try(:first).try(:content).try(:strip)
-    availability = page.css('.moutarde').first.try(:content).try(:strip)
+    availability = page.css('#content .moutarde').first.try(:content).try(:strip)
     price =~ /\d+(,\+)?/ && availability =~ /en stock/i
   end
 
