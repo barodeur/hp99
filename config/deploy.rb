@@ -12,7 +12,7 @@ require 'bundler/capistrano'
 
 after "deploy:setup", "symlinks:mkdir"
 # before "deploy", "rbenv:init"
-after "deploy:update_code", "symlinks:db", "symlinks:mailers", "assets:precompile"
+after "deploy:update_code", "symlinks:db", "symlinks:mailers", "symlinks:airbrake", "assets:precompile"
 after "deploy", "deploy:cleanup"
 
 namespace :rbenv do
@@ -36,6 +36,11 @@ namespace :symlinks do
     run "ln -nfs #{shared_path}/config/mailers.yml #{current_release}/config/mailers.yml"
   end
 
+  desc "Symlink airbrake config file"
+  task :airbrake do
+    run "ln -nfs #{shared_path}/config/airbrake.yml #{current_release}/config/airbrake.yml"
+  end
+
   desc "Create dirs"
   task :mkdir do
     run "mkdir -p #{shared_path}/config"
@@ -48,3 +53,5 @@ namespace :assets do
     run "cd #{release_path}; RAILS_ENV=#{rails_env} #{bundle_cmd} exec rake assets:precompile"
   end
 end
+        require './config/boot'
+        require 'airbrake/capistrano'
