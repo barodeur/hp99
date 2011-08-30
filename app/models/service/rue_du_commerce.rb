@@ -10,6 +10,7 @@ class Service::RueDuCommerce < Service::Base
   end
 
   def self.confirm(url)
+    return false unless url
     page = Nokogiri::HTML(open(url))
     price = page.css('.fpPriceBig').try(:first).try(:content).try(:strip)
     add_to_basket_link_title = page.css('.buy.fright a').try(:first).try(:[], 'title')
@@ -21,7 +22,7 @@ class Service::RueDuCommerce < Service::Base
       page = Nokogiri::HTML(open("http://search.rueducommerce.fr/search?s=#{query}"))
       page.css('.blcResRech').first.css('.prdDiv').map do |prd|
         title = prd.css('.prdTitle').first.try(:content).try(:strip)
-        url = prd.css('.prdTitle').first.try(:[], 'href')
+        url = prd.css('.prdTitle a').first.try(:[], 'href')
         rayons = prd.css('.prdDescrAr').first.try(:content).try(:strip)
         price = prd.css('.price1x').first.try(:content).try(:strip)
         instance.results.create({title: title, url: url, price: price[/\d+(,\d+)?/], other: rayons})
