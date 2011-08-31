@@ -3,15 +3,7 @@ source 'http://rubygems.org'
 # gem 'rails', '3.1.0.rc6'
 
 # Bundle edge Rails instead:
-gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails', :require => 'sass'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
+gem 'rails', '~> 3.1.0'
 
 gem 'jquery-rails'
 
@@ -22,16 +14,23 @@ gem 'jquery-rails'
 gem 'capistrano'
 gem 'capistrano-ext'
 
-# To use debugger
-gem 'ruby-debug19', :require => 'ruby-debug'
-
 # Mongoid
-gem "mongoid", "~> 2.1"
-gem "bson_ext", "~> 1.3"
+gem "mongoid", "~> 2.2"
+gem 'bson_ext'
 
 gem 'nokogiri', :require => 'nokogiri'
 gem 'haml-rails'
 gem 'airbrake'
+
+group :assets do
+  gem 'sass-rails', '~> 3.1.0'
+  gem 'coffee-rails', '~> 3.1.0'
+  gem 'uglifier'
+end
+
+group :development do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end
 
 group :staging do
   gem 'unicorn'
