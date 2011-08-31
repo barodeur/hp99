@@ -24,7 +24,7 @@ class Result
   end
 
   def avert_by_email
-    Registration.where(:confirmed_at.ne => nil).each do |registration|
+    Registration.where(:confirmed_at.ne => nil).order_by([[:confirmed_at, :asc]]).each do |registration|
       ResultMailer.avert(registration, self).deliver
     end
   end
