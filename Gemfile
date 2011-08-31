@@ -30,6 +30,7 @@ end
 
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'pry'
 end
 
 group :staging do
