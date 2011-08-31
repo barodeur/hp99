@@ -33,6 +33,11 @@ group :development do
   gem 'pry'
 end
 
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+end
+
 group :staging do
   gem 'unicorn'
 end
