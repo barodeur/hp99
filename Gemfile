@@ -29,13 +29,14 @@ group :assets do
 end
 
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'pry'
 end
 
 group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
+  gem 'pry'
+  gem 'rspec-rails'
 end
 
 group :staging do
