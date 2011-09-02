@@ -1,0 +1,9 @@
+= form_tag :method => :post, :confirm => "sur ?" do
+  = field_set_tag do
+    = label_tag 'subject'
+    = text_field_tag 'subject'
+  = field_set_tag do
+    = label_tag 'body'
+    = text_area_tag 'body'
+  = field_set_tag do
+    = submit_tag 'valider', :confirm => 'Sur ?'
