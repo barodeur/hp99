@@ -1,8 +1,9 @@
 !!!
 %html
   %head
-    %title HP99
+    %title HP99 à trouvé un HP TouchPad !
   %body
-    %p= @result.title
-    %p= @result.service.full_name
-    %p= @result.price
+    %h1 HP99 à trouvé un HP TouchPad !
+    .result
+      %p
+        = link_to @result.url, @result.url
