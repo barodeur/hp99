@@ -1,6 +1,8 @@
 class Service::Base
   include Mongoid::Document
 
+  IMPLEMENTATIONS = [Service::FnacFr, Service::RueDuCommerce, Service::Cdiscount]
+
   has_many :results, :inverse_of => :service
   has_and_belongs_to_many :queries
 
