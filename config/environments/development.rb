@@ -25,5 +25,7 @@ Hp99::Application.configure do
   # Do not compress assets
   config.assets.compress = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = YAML.load_file(Rails.root.join('config', 'mailers.yml'))[Rails.env].try(:to_options)
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
