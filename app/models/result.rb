@@ -1,5 +1,6 @@
 class Result
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   after_create :avert
 
