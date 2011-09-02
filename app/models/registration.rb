@@ -12,6 +12,8 @@ class Registration
   field :confirmed_at, :type => DateTime
   attr_accessible :email
 
+  scope :confirmed, where(:confirmed_at.ne => nil).order_by([[:confirmed_at, :asc]])
+
   validates :email,
     presence: true,
     uniqueness: true,
