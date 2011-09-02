@@ -23,7 +23,7 @@ class Service::Base
   def self.fetch_results(options={})
     fail if self == Service::Base
     results = instance.queries.map do |query|
-      perform_query(query)
+      perform_query(query) rescue puts "ERROR: perform query #{self} #{query}"
     end
     results.flatten.compact
   end

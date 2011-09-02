@@ -17,7 +17,7 @@ class Result
 
   def hp_touchpad?
     errors[:hp_touchpad?] << "This result is not an HP TouchPad" unless service.class.hp_touchpad?(self)
-    errors[:confirmed] << "Not confirmed" unless service.class.confirm(self.url)
+    (errors[:confirmed] << "Not confirmed" unless service.class.confirm(self.url)) rescue puts "ERROR: Confirmation #{url}"
   end
 
   def avert
