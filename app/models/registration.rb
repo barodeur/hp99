@@ -23,7 +23,7 @@ class Registration
 
   protected
     def generate_confirmation_token
-      self.confirmation_token = ActiveSupport::SecureRandom.hex(16)
+      self.confirmation_token = SecureRandom.hex(16)
     end
 
     def send_confirmation_token
