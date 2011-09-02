@@ -17,7 +17,7 @@ gem 'capistrano-ext'
 # Mongoid
 gem "mongoid", "~> 2.2"
 gem 'bson_ext'
-
+gem "devise", "~> 1.4.4"
 gem 'nokogiri', :require => 'nokogiri'
 gem 'haml-rails'
 gem 'airbrake'
