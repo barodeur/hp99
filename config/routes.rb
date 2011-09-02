@@ -12,4 +12,6 @@ Hp99::Application.routes.draw do
     get :confirmation, :on => :member
     get :unconfirm, :on => :member
   end
+
+  resources :results, :only => [:index]
 end

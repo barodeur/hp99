@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Results monitor
+  %body
+    - Service::Base::IMPLEMENTATIONS.each do |service_class|
+      - service_sym = service_class.to_s.underscore.split('/').last.to_sym
+      %h2= service_class
+      - if @results[service_sym].blank?
+        %p Pas encore de résultats
+      - else
+        %ul
+          - @results[service_sym].each do |result|
+            %li
+              = result.created_at
+              = link_to result.url, result.url
