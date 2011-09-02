@@ -4,6 +4,7 @@ Hp99::Application.routes.draw do
   devise_for :admins
 
   namespace :admin do
+    root :to => 'admin#home'
   end
 
   resources :registrations, :only => [:show, :new, :create], :path => 'r' do
