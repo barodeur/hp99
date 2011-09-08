@@ -18,7 +18,7 @@ class Service::FnacFr < Service::Base
 
   protected
     def self.perform_query(query)
-      page = Nokogiri::HTML(open("http://recherche.fnac.com/Search/SearchResult.aspx?Search=#{query}&ItemPerPage=50"))
+      page = Nokogiri::HTML(open("http://recherche.fnac.com/Search/SearchResult.aspx?Search=#{query}"))
       page.css('.prd-result .oneprd').map do |prd|
         title = prd.css('.lienInverse.title').first.try(:content).try(:strip)
         url = prd.css('.lienInverse.title a').first.try(:[], 'href')
